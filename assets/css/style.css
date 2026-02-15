@@ -1,0 +1,245 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 200vh;
+  background: #000;
+  color: #fff;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+}
+
+header img {
+  max-height: 75px;
+  width: auto;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  pointer-events: auto;
+}
+
+.content img {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
+}
+
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.menu-toggle {
+  width: 30px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 210;
+}
+
+.bar {
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-toggle.active .bar:nth-child(1) {
+  transform: translateY(9.5px) rotate(45deg);
+}
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+.menu-toggle.active .bar:nth-child(3) {
+  transform: translateY(-9.5px) rotate(-45deg);
+}
+
+.overlay {
+  height: 100vh;
+  width: 0;
+  position: fixed;
+  z-index: 150;
+  top: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);  
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay.open {
+  width: 75%;
+}
+
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 10%;
+  padding-top: 180px;
+  gap: 20px;
+  flex: 1;
+}
+
+.overlay a {
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: 0.3s;
+  letter-spacing: 1px;
+}
+
+.overlay.open a {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.overlay a:hover {
+  color: #0099ff;
+  transform: translateX(10px);
+}
+
+.menu-footer {
+  margin-bottom: 50px;
+  padding: 30px;
+  text-align: center;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: 0.5s ease 0.5s;
+}
+
+.overlay.open .menu-footer {
+  opacity: 1;
+}
+
+.content {
+  padding: 120px 20px 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  margin-bottom: 25px;
+  padding: 20px;
+  border-left: 4px solid #ff0000;
+  opacity: 0;
+  transform: translateX(-100px) scale(0.9);
+  transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+p {
+  color: #ccc;
+  line-height: 1.8;
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.card.show:hover {
+  transform: translateX(0) scale(1.04);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+}
+
+.typewriter-wrapper {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  margin-bottom: 10px;
+}
+
+#typewriter-text {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  line-height: 1;
+}
+
+.cursor {
+  display: inline-block;
+  width: 4px;
+  height: 1.4em;
+  background-color: #ff0000;
+  margin-left: 4px;
+  animation: blink 0.8s steps(2, start) infinite;
+  flex-shrink: 0;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+.social {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 25px;
+}
+
+.social a {
+  color: #fff;
+  padding: 0px;
+  margin-bottom: 25px;
+  font-size: 25px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.social a:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+}
