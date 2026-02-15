@@ -102,14 +102,12 @@
       this.y -= this.speed;
       this.angle += this.rotationSpeed;
 
-      // fade pas mau keluar atas
       if (this.y < 150) {
         this.opacity = Math.max(0, this.y / 150);
       } else {
         this.opacity = 1;
       }
-
-      // reset kalau sudah keluar layar
+      
       if (this.y < -50 || this.opacity <= 0) {
         this.init(false);
       }
@@ -177,4 +175,5 @@
 
   setup();
   loop();
+
 });
